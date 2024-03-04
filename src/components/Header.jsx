@@ -8,10 +8,6 @@ function Header() {
   const { pathname } = useLocation();
   const [burgerClick, setBurgerClick] = useState(false);
 
-  const setBurgerClickFalse = () => {
-    setBurgerClick(false);
-  };
-
   const burgerToggle = () => {
     setBurgerClick(!burgerClick);
   };

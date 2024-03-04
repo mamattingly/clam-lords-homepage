@@ -1,6 +1,6 @@
 import App from "./App";
 import Home from "./pages/Home";
-// import About from "./pages/About";
+import About from "./pages/About";
 import Discord from "./pages/Discord";
 // import Members from "./pages/Members";
 import Logs from "./pages/Logs";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <div>About</div>,
+        element: <About />,
       },
       {
         path: "discord",
