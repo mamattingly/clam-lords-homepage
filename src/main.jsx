@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 // import About from "./pages/About";
 import Discord from "./pages/Discord";
 // import Members from "./pages/Members";
-// import Logs from "./pages/Logs";
+import Logs from "./pages/Logs";
 // import Contact from "./pages/Contact";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "logs",
-        element: <div>Logs</div>,
+        element: <Logs />,
       },
       {
         path: "contact",
