@@ -1,12 +1,26 @@
 import "./pageStyles/ContactStyles.css";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const form = useRef();
+  const [formState, setFormState] = useState({ user_name: '', user_email: '', message: '' });
+  
+  const handleChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+  const [message, setMessage] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+
+  useEffect(() => {
+    if (emailSent) {
+      setFormState({ user_name: '', user_email: '', message: '' });
+    }
+  }, [emailSent]);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    
 
     emailjs
       .sendForm(
@@ -20,6 +34,9 @@ export const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
+          setEmailSent(true);
+          setMessage("Email sent successfully!");
+          setFormState({ user_name: '', user_email: '', message: '' });
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -36,13 +53,14 @@ export const Contact = () => {
       </div>
       <form ref={form} onSubmit={sendEmail}>
         <label>Name</label>
-        <input type="text" name="user_name" />
+        <input type="text" name="user_name" onChange={handleChange} value={formState.user_name} />
         <label>Email</label>
-        <input type="email" name="user_email" />
+        <input type="email" name="user_email" onChange={handleChange} value={formState.user_email} />
         <label>Message</label>
-        <textarea name="message" />
+        <textarea name="message" onChange={handleChange} value={formState.message} />
         <input className="submit-button" type="submit" value="Send" />
       </form>
+      <p>{message}</p>
     </div>
   );
 };
