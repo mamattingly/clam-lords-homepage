@@ -10,11 +10,11 @@ export const Contact = () => {
 
     emailjs
       .sendForm(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
+        "service_yu0d7t5",
+        "template_ku2t4io",
         form.current,
         {
-          publicKey: process.env.EMAILJS_PUBLIC_KEY,
+          publicKey: "UsPk4XE-jYR3x4W7k",
         }
       )
       .then(
