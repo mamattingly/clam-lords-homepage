@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   text-align: center;
   background-image: url("../../assets/discordBackground.svg");
@@ -26,11 +26,25 @@ a {
 
 .logs-container img {
   margin-bottom: 10px;
+  margin-top: 10px;
   border-radius: 10px;
   background-color: lightslategray;
   padding: 0.5rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+}
+
+.logs-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.logs-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .logs-container img:hover {
