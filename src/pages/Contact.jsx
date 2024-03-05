@@ -13,11 +13,11 @@ export const Contact = () => {
 
     emailjs
       .sendForm(
-        SERVICE_ID || EMAILJS_SERVICE_ID,
-        TEMPLATE_ID || EMAILJS_TEMPLATE_ID,
+        SERVICE_ID || process.env.EMAILJS_SERVICE_ID,
+        TEMPLATE_ID || process.env.EMAILJS_TEMPLATE_ID,
         form.current,
         {
-          publicKey: PUBLIC_KEY || EMAILJS_PUBLIC_KEY,
+          publicKey: PUBLIC_KEY || process.env.EMAILJS_PUBLIC_KEY,
         }
       )
       .then(
