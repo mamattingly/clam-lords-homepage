@@ -39,7 +39,7 @@
 .conduct {
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(119, 136, 153, 0.8); /* Adjust the alpha value as needed */
+  background-color: rgba(119, 136, 153, 0.8);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
