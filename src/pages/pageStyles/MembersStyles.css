@@ -12,5 +12,17 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    margin-right: 20rem;
+    margin-left: 20rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
+@media (max-width: 1200px) {
+    .members-grid {
+        margin-right: 0rem;
+        margin-left: 0rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
