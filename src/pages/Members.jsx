@@ -1,8 +1,7 @@
 import "./pageStyles/MembersStyles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Member from "../components/Member";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Fuse from "fuse.js";
 
 const Members = () => {
@@ -12,6 +11,7 @@ const Members = () => {
   const [pageData, setPageData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const pageSize = 30;
+  const loader = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,23 +56,46 @@ const Members = () => {
     }
   }, [data, searchQuery]);
 
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, options);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+
+    return () => {
+      if (loader.current) {
+        observer.unobserve(loader.current);
+      }
+    };
+  }, [page]);
+
   const loadPageState = () => {
     let filteredData = data;
     if (searchQuery) {
       const fuse = new Fuse(data, { keys: ["character.name"] });
-      console.log("Fuse instance:", fuse);
       const result = fuse.search(searchQuery);
       filteredData = result.map((item) => item.item);
     }
 
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
-    setPageData(filteredData.slice(start, end));
-    setPage(1);
+    setPageData([...pageData, ...filteredData.slice(start, end)]);
+    setPage(page + 1);
     setHasMore(end < filteredData.length);
   };
 
-  const handleScrollThreshold = 0.9;
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting && hasMore) {
+      loadPageState();
+    }
+  };
 
   console.log("data", data);
   return (
@@ -85,19 +108,14 @@ const Members = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       {data.length > 0 ? (
-        <InfiniteScroll
-          dataLength={pageData.length}
-          next={loadPageState}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          scrollThreshold={handleScrollThreshold}
-        >
-          <ul className="members-grid">
-            {pageData.map((member) => (
-              <Member key={member.character.id} member={member} />
-            ))}
-          </ul>
-        </InfiniteScroll>
+        <ul className="members-grid">
+          {pageData.map((member, index) => (
+            <Member key={member.character.id + index} member={member} />
+          ))}
+          <div ref={loader}>
+            <h4>Loading...</h4>
+          </div>
+        </ul>
       ) : (
         <div className="members-container-loading">
           <p>Loading members...</p>
