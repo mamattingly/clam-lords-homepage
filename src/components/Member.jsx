@@ -1,5 +1,14 @@
 import "./componentStyles/MemberStyles.css";
 import { FaShieldAlt, FaChartBar } from "react-icons/fa";
+import druidIcon from "../assets/classIcons/druid.png";
+import hunterIcon from "../assets/classIcons/hunter.png";
+import mageIcon from "../assets/classIcons/mage.png";
+import paladinIcon from "../assets/classIcons/paladin.png";
+import priestIcon from "../assets/classIcons/priest.png";
+import rogueIcon from "../assets/classIcons/rogue.png";
+import shamanIcon from "../assets/classIcons/shaman.png";
+import warlockIcon from "../assets/classIcons/warlock.png";
+import warriorIcon from "../assets/classIcons/warrior.png";
 
 const Member = ({ member }) => {
   const getRankLabel = (rank) => {
@@ -23,10 +32,27 @@ const Member = ({ member }) => {
     }
   };
 
+  const classId = {
+    1: warriorIcon,
+    3: hunterIcon,
+    4: rogueIcon,
+    5: priestIcon,
+    7: shamanIcon,
+    8: mageIcon,
+    9: warlockIcon,
+    11: druidIcon,
+  };
+
+  console.log(member);
+
   return (
-    <li className="card">
+    <li className="card" >
       <p>{member.character.name}</p>
       <p>Rank: {getRankLabel(member.rank)}</p>
+      <img
+        src={classId[member.character.playable_class.id]}
+        alt={member.character.class}
+      />
       <div>
         <a
           href={`https://www.classic-armory.org/character/us/vanilla/chaos-bolt/${member.character.name}`}
