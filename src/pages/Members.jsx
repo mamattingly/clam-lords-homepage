@@ -77,17 +77,21 @@ const Members = () => {
 
   const loadPageState = () => {
     let filteredData = data;
+    let start = (page - 1) * pageSize;
+    let end = start + pageSize;
+    const slicedData = filteredData.slice(start, end);
+
     if (searchQuery) {
       const fuse = new Fuse(data, { keys: ["character.name"] });
       const result = fuse.search(searchQuery);
       filteredData = result.map((item) => item.item);
+      const slicedData = filteredData.slice(0, pageSize);
+      setPageData(slicedData);
+    } else {
+      setPageData((prevPageData) => [...prevPageData, ...slicedData]);
+      setPage(page + 1);
+      setHasMore(end < filteredData.length);
     }
-
-    const start = (page - 1) * pageSize;
-    const end = start + pageSize;
-    setPageData([...pageData, ...filteredData.slice(start, end)]);
-    setPage(page + 1);
-    setHasMore(end < filteredData.length);
   };
 
   const handleObserver = (entities) => {
@@ -97,7 +101,9 @@ const Members = () => {
     }
   };
 
-  console.log("data", data);
+  console.log("searchQuery:", searchQuery); // Log searchQuery
+  console.log("pageData:", pageData); // Log pageData
+  console.log("data:", data); // Log data
   return (
     <div className="members-container">
       <input
