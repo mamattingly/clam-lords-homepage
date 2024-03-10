@@ -8,6 +8,16 @@
     background-size: cover;
 }
 
+.members-container-loading {
+    text-align: center;
+    background-image: url("../../assets/discordBackground.svg");
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
 .members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -17,6 +27,14 @@
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
+
+.search-input {
+    width: auto;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+  }
 
 @media (max-width: 1200px) {
     .members-grid {
