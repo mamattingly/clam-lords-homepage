@@ -101,9 +101,6 @@ const Members = () => {
     }
   };
 
-  console.log("searchQuery:", searchQuery); // Log searchQuery
-  console.log("pageData:", pageData); // Log pageData
-  console.log("data:", data); // Log data
   return (
     <div className="members-container">
       <input
@@ -119,7 +116,6 @@ const Members = () => {
             <Member key={member.character.id + index} member={member} />
           ))}
           <div ref={loader}>
-            <h4>Loading...</h4>
           </div>
         </ul>
       ) : (
