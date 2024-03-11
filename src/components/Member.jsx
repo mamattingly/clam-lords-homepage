@@ -43,8 +43,6 @@ const Member = ({ member }) => {
     11: druidIcon,
   };
 
-  console.log(member);
-
   return (
     <li className="card" >
       <p>{member.character.name}</p>

@@ -1,7 +1,9 @@
 import "./pageStyles/LogsStyles.css";
+import Transition from "../Transition";
 
 function Logs() {
   return (
+    <Transition>
     <div className="logs-container">
       <div className="logs-content">
         <h2>Welcome to the Clam Lords' World of Logs Page!</h2>
@@ -31,7 +33,8 @@ function Logs() {
           us in reliving the moments that define our Clan's legacy.
         </p>
       </div>
-    </div>
+      </div>
+    </Transition>
   );
 }
 

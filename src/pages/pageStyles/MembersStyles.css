@@ -11,11 +11,14 @@
 .members-container-loading {
     text-align: center;
     background-image: url("../../assets/discordBackground.svg");
-    min-height: 100%;
+    min-height: 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .members-grid {
@@ -34,7 +37,22 @@
     margin: 10px;
     border-radius: 5px;
     border: none;
-  }
+}
+
+.react-icon {
+color: #61dafb;
+vertical-align: middle;
+animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
 
 @media (max-width: 1200px) {
     .members-grid {

@@ -1,8 +1,10 @@
-import React from 'react';
+import './pageStyles/AboutStyles.css';
+import Transition  from '../Transition.jsx';
 import './pageStyles/AboutStyles.css';
 
 const About = () => {
   return (
+    <Transition>
     <div className="about-us-section">
       <div className="about-us-info">
         <h2>ABOUT US</h2>
@@ -79,8 +81,12 @@ const About = () => {
         </ul>
         <p>-krix</p>
       </div>
-    </div>
+      </div>
+    </Transition>
   );
-};
+}
+
+
+
 
 export default About;

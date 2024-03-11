@@ -1,8 +1,10 @@
 import "./pageStyles/MembersStyles.css";
+import { FaReact } from "react-icons/fa";
 import { useEffect, useState, useRef } from "react";
 import Member from "../components/Member";
 import axios from "axios";
 import Fuse from "fuse.js";
+import Transition from "../Transition";
 
 const Members = () => {
   const [data, setData] = useState([]);
@@ -102,6 +104,7 @@ const Members = () => {
   };
 
   return (
+    <Transition>
     <div className="members-container">
       <input
         className="search-input"
@@ -115,15 +118,16 @@ const Members = () => {
           {pageData.map((member, index) => (
             <Member key={member.character.id + index} member={member} />
           ))}
-          <div ref={loader}>
+          <div ref={loader}>1
           </div>
         </ul>
       ) : (
         <div className="members-container-loading">
-          <p>Loading members...</p>
+          <p>Loading members... <FaReact size={20} className="react-icon" /></p>
         </div>
       )}
-    </div>
+      </div>
+    </Transition>
   );
 };
 

@@ -1,19 +1,17 @@
-
 import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
+  const location = useLocation();
   return (
     <>
       <Header />
       <main>
-        <Outlet />
+          <Outlet location={location} key={location.pathname} />
       </main>
       <Footer />
     </>
   );
 }
-
-export default App;

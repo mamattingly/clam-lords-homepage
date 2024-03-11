@@ -1,6 +1,7 @@
 import "./pageStyles/ContactStyles.css";
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import Transition from "../Transition";
 
 export const Contact = () => {
   const form = useRef();
@@ -45,6 +46,7 @@ export const Contact = () => {
   };
 
   return (
+    <Transition>
     <div className="contact-page">
       <div>
         <h3>Contact Us</h3>
@@ -61,7 +63,8 @@ export const Contact = () => {
         <input className="submit-button" type="submit" value="Send" />
       </form>
       <p>{message}</p>
-    </div>
+      </div>
+    </Transition>
   );
 };
 

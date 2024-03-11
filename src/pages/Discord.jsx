@@ -1,8 +1,10 @@
 import "./pageStyles/DiscordStyles.css";
 import discordQR from "../assets/discordQR.svg";
+import Transition from "../Transition";
 
 export default function Discord() {
   return (
+    <Transition>
     <div className="discord blur-background">
       <div className="discord-content">
       <h2>Join The Clam Lord's Discord Server!</h2>
@@ -15,6 +17,7 @@ export default function Discord() {
           <img src={discordQR} className="qr-code" alt="Discord QR Code" />
         </a>
       </div>
-    </div>
+      </div>
+      </Transition>
   );
 }
