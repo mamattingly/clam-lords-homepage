@@ -9,7 +9,7 @@ Link to deployed page: [Clam Lords Homepage](https://clam-lords-homepage.onrende
 
 ## Overview
 
-Thi World of Warcraft Guild Website serves as an online hub for members of the guild. It provides information about the guild, its members, and other relevant updates related to the game.
+This is a World of Warcraft Guild Website that serves as an online hub for members of the guild. It provides information about the guild, its members, and other relevant updates related to the game.
 
 ## Technologies Used
 
