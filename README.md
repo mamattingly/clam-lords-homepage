@@ -4,7 +4,7 @@ Welcome to the Clam Lords Homepage repository! This repository contains all the 
 
 Link to deployed page: [Clam Lords Homepage](https://clam-lords-homepage.onrender.com "Deployed on Render")
 
-# Demo
+## Demo
 ![1710291508348](image/README/web-portfolio-mobile.gif)
 
 ## Overview
